@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-go
+  Sample SAM Template for lambda-go
+
+Parameters:
+  Region:
+    Type: String
+    Default: ap-northeast-1
+  Stage:
+    Type: String
+    Default: Dev
+  ApiDomainName:
+    Type: String
+    Default: api.example.com
+
+Resources:
+  # Lambda Application
+  App1Application:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: app1.yaml
+      Parameters:
+        Region: !Ref Region
+        Stage: !Ref Stage
+        ApiDomainName: !Ref ApiDomainName
+  App2Application:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: app2.yaml
+      Parameters:
+        Region: !Ref Region
+        Stage: !Ref Stage
+        ApiDomainName: !Ref ApiDomainName
